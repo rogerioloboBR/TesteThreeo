@@ -1,0 +1,63 @@
+## Ignorar arquivos temporários do Visual Studio, resultados de build e
+## arquivos gerados por complementos populares do Visual Studio.
+
+# Arquivos específicos do usuário
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Pastas específicas do usuário
+.vscode/
+.vs/
+.idea/
+.DS_Store
+
+# Logs
+*.log
+
+# Resultados do build
+bin/
+obj/
+out/
+AppPackages/
+Generated_Code/
+
+# Pacotes NuGet
+*.nupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Configurações de ambiente
+.env
+# Logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+*.log
+
+# Diretórios de dependências
+node_modules/
+
+# Build de produção
+dist/
+
+# Arquivos de ambiente local
+.env
+.env.local
+.env.*.local
+
+# Arquivos de configuração do editor
+.idea/
+.vscode/
+*.swp
+*~
+
+# Arquivos do sistema Mac
+.DS_Store
+
+# Cache de miniaturas do Windows
+Thumbs.db

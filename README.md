@@ -1,89 +1,93 @@
-# Projeto React + .NET com Suporte ao Docker
+Projeto Full Stack - TesteThreeo (.NET e React com Docker)
+Este projeto utiliza .NET no backend e React no frontend, cada um rodando em contêineres Docker separados. Este guia fornece instruções detalhadas para baixar, instalar as dependências, e rodar os contêineres do projeto.
 
-Este projeto integra um frontend React e um backend .NET utilizando Docker para simplificar o processo de implantação.
+Repositório
+Clone o repositório diretamente do GitHub:
 
----
+https://github.com/rogerioloboBR/TesteThreeo
 
-## **Requisitos**
+Pré-requisitos
+Certifique-se de ter os seguintes softwares instalados:
 
-Antes de executar este projeto, certifique-se de ter os seguintes softwares instalados:
+Git - Para clonar o repositório:
+Download Git
+Docker - Para rodar os contêineres:
+Download Docker
+Docker Compose - Para gerenciar múltiplos contêineres Docker:
+Download Docker Compose
 
-- [Docker](https://www.docker.com/get-started)
-- [Node.js](https://nodejs.org/) (Opcional para desenvolvimento local)
 
----
+Passos para Rodar o Projeto
+1. Clone o Repositório
+Clone o repositório para sua máquina local:
 
-## **Estrutura do Projeto**
 
-- `frontend/`: Projeto React criado com Vite e TypeScript.
-- `backend/`: Projeto .NET com a lógica da API.
-- `docker-compose.yml`: Arquivo de configuração do Docker Compose para gerenciar os serviços.
-
----
-
-## **Instruções de Instalação**
-
-### 1. Clonar o Repositório
-
-```bash
 git clone https://github.com/rogerioloboBR/TesteThreeo.git
-cd TesteThreeo
-----
-2. Construir e Executar o Projeto com Docker
-No diretório raiz do projeto, execute o seguinte comando:
+2. Subindo o Backend
+O projeto do backend é uma aplicação .NET. Para iniciar o backend em um contêiner Docker, siga os passos abaixo:
+
+Navegue até o diretório TesteThreeo.Backend:
 
 
-docker-compose up --build
-Este comando irá:
-
-Construir o frontend React.
-Construir o backend .NET.
-Iniciar ambos os serviços em contêineres Docker.
----
-3. Acessar o Aplicativo
-Frontend: Abra http://localhost:3000 no navegador.
-API do Backend: A API estará acessível em http://localhost:5000.
-Para Desenvolvimento Local
-Se preferir executar os serviços localmente sem Docker:
-
-Frontend React
-Acesse o diretório frontend/:
+cd TesteThreeo.Backend
+Agora, para rodar o contêiner Docker com o backend, execute o seguinte comando:
 
 
-cd frontend
-npm install
-npm run dev
-Abra http://localhost:3000 no navegador.
-
-Backend .NET
-Acesse o diretório backend/:
+docker build -t testethreeobackend .
+Após a construção da imagem, execute o contêiner:
 
 
-cd backend
-dotnet restore
-dotnet run
-A API estará rodando em http://localhost:5000.
+docker run -d --name TesteThreeo.Backend_1 -p 32773:80 testethreeobackend
+Agora, o backend estará rodando no contêiner e acessível via https://localhost:32773.
 
-Variáveis de Ambiente
-Frontend React
-Crie um arquivo .env no diretório frontend/ com o seguinte conteúdo:
+3. Subindo o Frontend
+O projeto do frontend é uma aplicação React. Para iniciar o frontend em um contêiner Docker, siga os passos abaixo:
 
-plaintext
-Copiar código
-VITE_API_URL=http://localhost:5000/api
-Backend .NET
-Crie um arquivo .env no diretório backend/ para configurar variáveis como strings de conexão ao banco de dados.
-
-Comandos Comuns do Docker
-Parar os Contêineres:
+Navegue até o diretório TesteThreeo.Frontend:
 
 
-docker-compose down
-Reconstruir sem Cache:
+cd TesteThreeo.Frontend
+Agora, para rodar o contêiner Docker com o frontend, execute o seguinte comando:
 
 
-docker-compose build --no-cache
-Verificar Logs:
+docker build -t testethreeofront .
+Após a construção da imagem, execute o contêiner:
 
 
-docker-compose logs
+docker run -d --name testethreeofront -p 8080:80 testethreeofront
+Agora, o frontend estará rodando no contêiner e acessível via http://localhost:8080.
+
+URLs de Acesso
+Frontend (React): http://localhost:8080
+Backend (.NET): https://localhost:32773
+Comandos Úteis do Docker
+Verificar os contêineres em execução:
+
+
+docker ps
+Parar o contêiner do backend:
+
+
+docker stop TesteThreeo.Backend_1
+Parar o contêiner do frontend:
+
+
+docker stop testethreeofront
+Remover o contêiner do backend:
+
+
+docker rm TesteThreeo.Backend_1
+Remover o contêiner do frontend:
+
+
+docker rm testethreeofront
+Como Funciona
+O frontend é uma aplicação React que se comunica com o backend via API.
+O backend é uma aplicação .NET que responde a requisições de cálculo matemático.
+Ambos os serviços estão configurados para rodar em contêineres Docker separados.
+Contribuindo
+Se você deseja contribuir para este projeto, basta criar um fork do repositório, realizar suas modificações e enviar um pull request.
+
+Licença
+Este projeto está licenciado sob a MIT License.
+

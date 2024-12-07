@@ -130,7 +130,9 @@ git commit -m "Minha nova feature"
 Faça o push para o branch:
 
 git push origin minha-feature
+
 Abra um Pull Request no repositório original.
+
 Licença
 Este projeto está licenciado sob a Licença MIT.
 
